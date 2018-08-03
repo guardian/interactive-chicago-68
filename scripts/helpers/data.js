@@ -28,10 +28,56 @@ function fetchData(callback) {
 
 function setSheetNames(data) {
     data = {
-        'events': data[0]
+        'sections': data[0],
+        'furniture': data[1],
+        'related': data[2]
     }
 
     return data;
+}
+
+function setFurniture(data) {
+    for (var i = 0; i < data.furniture.length; i++) {
+        data[data.furniture[i].option] = data.furniture[i].value
+    }
+
+    delete data.furniture;
+    return data;
+}
+
+function organiseSections(data) {
+    var organisedSections = [];
+
+    for (var i in data.sections) {
+        if (data.sections[i].type === 'text') {
+            organisedSections.push(data.sections[i]);
+        } else {
+            if (organisedSections.length > 0) {
+                if (organisedSections[organisedSections.length - 1].type === 'media') {
+                    organisedSections[organisedSections.length - 1].media.push(data.sections[i]);
+                } else {
+                    organisedSections.push({
+                        type: 'media',
+                        media: [data.sections[i]]
+                    })
+                }
+            }
+        }
+    }
+
+    console.log(organisedSections);
+
+    return data;
+}
+
+function convertToGridUrl(url) {
+    var crop = url.split('?crop=')[1];
+        url = url.replace('gutools.co.uk', 'guim.co.uk');
+        url = url.replace('http://', 'https://');
+        url = url.replace('images/', '');
+        url = url.split('?')[0];
+
+    return url + '/' + crop;
 }
 
 module.exports = function getData() {
@@ -40,6 +86,8 @@ module.exports = function getData() {
     fetchData(function(result) {
         data = result;
         data = setSheetNames(data);
+        data = setFurniture(data);
+        data = organiseSections(data);
 
         isDone = true;
     });
