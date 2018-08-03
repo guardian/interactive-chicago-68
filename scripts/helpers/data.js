@@ -45,6 +45,16 @@ function setFurniture(data) {
     return data;
 }
 
+function cleanImageUrls(data) {
+    for (var i in data.sections) {
+        if (data.sections[i].type === 'image') {
+            data.sections[i].asset = convertToGridUrl(data.sections[i].asset);
+        }
+    }
+
+    return data;
+}
+
 function organiseSections(data) {
     var organisedSections = [];
 
@@ -87,6 +97,7 @@ module.exports = function getData() {
         data = result;
         data = setSheetNames(data);
         data = setFurniture(data);
+        data = cleanImageUrls(data);
         data = organiseSections(data);
 
         isDone = true;
