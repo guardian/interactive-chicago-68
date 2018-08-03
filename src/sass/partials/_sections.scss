@@ -4,7 +4,7 @@
         margin-bottom: 18px;
     }
 
-    .uit-drop {
+    .uit-drop-cap {
         @include dropCap(4);
         font-weight: bold;
         color: $c-red;
@@ -27,13 +27,12 @@
     position: relative;
     z-index: 5;
     margin: 60vh 0;
-    background-color: $c-black;
     display: inline-block;
     padding: 2px 6px;
     font-family: 'Guardian Egyptian Web';
     font-weight: 700;
     font-size: 24px;
-    line-height: 1.2;
+    line-height: 1.35;
     color: $c-white;
     max-width: 620px;
 
@@ -43,6 +42,32 @@
 
     @include mq(wide) {
         margin-left: 220px;
+    }
+
+    p {
+        display: inline;
+        padding-bottom: .1em;
+        background: linear-gradient($c-black, $c-black) no-repeat;
+        box-shadow: 4px 0 0 $c-black, -4px 0 0 $c-black;
+
+        &:after {
+            content: '\A';
+            white-space: pre;
+        }
+    }
+
+    strong {
+        color: $c-light-red;
+    }
+
+    a {
+        text-decoration: none;
+        border-bottom: 1px solid $c-light-red;
+        color: $c-white;
+
+        &:hover {
+            color: $c-light-red;
+        }
     }
 }
 
