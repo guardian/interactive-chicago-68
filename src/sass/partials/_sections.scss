@@ -1,0 +1,53 @@
+.uit-section--type {
+    p {
+        @include bodyCopy();
+        margin-bottom: 18px;
+    }
+
+    .uit-drop {
+        @include dropCap(4);
+        font-weight: bold;
+        color: $c-red;
+    }
+}
+
+.uit-section--media {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.uit-media__caption {
+    position: relative;
+    z-index: 5;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 80vh;
+}
+
+.uit-media__media {
+    pointer-events: none;
+    transition: opacity 0.3s linear;
+    width: 100%;
+    height: 100vh;
+
+    .is-future &,
+    .is-past & {
+        position: absolute;
+    }
+
+    .is-future & {
+        top: 0;
+    }
+
+    .is-past & {
+        bottom: 0;
+    }
+
+    .is-active & {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+}

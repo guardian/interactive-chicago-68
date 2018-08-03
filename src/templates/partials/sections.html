@@ -22,14 +22,19 @@
             <ul class='uit-section uit-section--media'>
                 {{#each media}}
                     <li class='uit-media uit-media--{{ type }}'>
+                        <div class='uit-container'>
+                            <div class='uit-media__caption'>
+                                {{{ marked copy }}}
+                            </div>
+                        </div>
+
                         {{#if_eq type 'image'}}
-                            <img class='uit-media__image' src='{{ asset }}/2000.jpg' />
+                            <img class='uit-media__media uit-media__media--image' src='{{ asset }}/2000.jpg' />
                         {{/if_eq}}
                         {{#if_eq type 'video'}}
-                            <video class='uit-media__video' autoplay muted>
+                            <video class='uit-media__media uit-media__media--video' autoplay muted>
                                 <source src='{{ asset }}' />
                             </video>
-                        
                         {{/if_eq}}
                     </li>
                 {{/each}}
