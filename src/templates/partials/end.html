@@ -1,0 +1,56 @@
+<div class='uit-slide uit-slide--{{ slides.length }}'>
+    <div class='uit-slide-scroll' data-slide='{{ slides.length }}'></div>
+    <div class='uit-slide-panel'>
+        <div class='uit-container'>
+            <div class='uit-slide-panel__content uit-slide-end__content'>
+                <span class='uit-slide-panel__content__inner'>
+                    <span class='uit-slide-panel__title'>
+                        Editing <span class='uit-slide-panel__description'>
+                            {{ editing }}
+                        </span>
+                    </span>
+                    <br />
+                    <span class='uit-slide-panel__title'>
+                        Copy <span class='uit-slide-panel__description'>
+                            {{ copy }}
+                        </span>
+                    </span>
+                    <br />
+                    <span class='uit-slide-panel__title'>
+                        Design <span class='uit-slide-panel__description'>
+                            {{ design }}
+                        </span>
+                    </span>
+                    <br />
+                    <span class='uit-slide-panel__title'>
+                        <div class='uit-related-content'>
+                            Related stories
+                        </div>
+                    </span>
+                </span>
+
+                <div class='uit-related-content_container'>
+                    {{#each related}}
+                    <div class='uit-related-content__children uit-related-content__children--{{ @key }}'>
+                        <a class='uit-related-content_link' href='{{ link }}'>
+
+                            {{#if hasCover}}
+                            <div class='uit-related-image uit-related-image--{{ @key }}'>
+                            </div>
+                            {{else}}
+                            <div class='uit-related-secondary uit-related-image uit-related-image--{{ @key }}'>
+                            </div>
+                            {{/if}}
+                            <style>
+                            .uit-related-image--{{ @key }} {
+                                background-image: url({{ image }}/500.jpg);
+                            }
+                            </style>
+                            <h2 class='uit-related__title'>{{ headline }}</h2>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>

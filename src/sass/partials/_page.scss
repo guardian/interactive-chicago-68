@@ -20,3 +20,11 @@ figure.interactive-atom {
         margin: 0;
     }
 }
+
+header, #bannerandheader {
+    display: none !important;
+}
+
+body, html {
+    background-color: $c-black;
+}

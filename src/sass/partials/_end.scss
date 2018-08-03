@@ -1,0 +1,148 @@
+// outro stuff here// intro stuff here
+.video_card_container {
+    width: 100%;
+    height: 100%;
+
+    @include mq(desktop) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.uit-related-content_container {
+    max-width: 100%;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include mq(desktop) {
+        font-size: 20px;
+        padding-top: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+.uit-slide-end__content {
+    top: calc(13vh - 2px);
+    left: 10px;
+    right: 10px;
+
+    @include mq(mobileLandscape) {
+        left: 20px;
+        right: 20px;
+    }
+
+    @include mq(desktop) {
+        max-width: 82%;
+        top: calc(20vh - 22px);
+        left: calc(15vh - 22px);
+    }
+
+    .uit-slide-panel__title {
+        font-size: 18px;
+        margin-bottom: 0;
+
+        @include mq(desktop) {
+            font-size: 22px;
+        }
+
+        .uit-related-content {
+            color: $c-white;
+            margin-top: 10px;
+            padding-top: 2px;
+            border-top: 1px solid $c-white;
+
+            @include mq(desktop) {
+                margin-top: 30px;
+                padding-top: 4px;
+            }
+        }
+    }
+
+    .uit-slide-panel__description {
+        font-size: 18px;
+        line-height: 1;
+    }
+}
+
+.uit-related-content__children {
+    flex: 0 0 100%;
+    height: 90%;
+
+    @include mq(desktop) {
+        flex: 0 0 calc(25% - 15px);
+        margin-top: 0px;
+    }
+}
+
+.uit-related-secondary {
+    display: none;
+
+    @include mq(desktop) {
+        display: flex;
+    }
+}
+
+.uit-related-image {
+    width: 100%;
+    padding-top: 60%;
+    margin-top: 10px;
+    background-size: cover;
+    background-position: center center;
+    border-left: 1px solid $c-white;
+    border-top: 1px solid $c-white;
+    transition: opacity 0.3s linear;
+
+    @include mq(desktop) {
+        margin-top: 0px;
+    }
+}
+
+.uit-related-content__children--3 {
+    display: none;
+
+    @include mq(desktop) {
+        display: flex;
+    }
+}
+
+.uit-related__title {
+    border-left: 1px solid $c-white;
+    border-top: 1px solid $c-white;
+    padding: 4px 4px 12px 6px;
+    font-size: 18px;
+    color: $c-light-red;
+    transition: color 0.3s linear;
+
+    @include mq(desktop) {
+        font-size: 20px;
+    }
+}
+
+.uit-related-content_link {
+    color: $c-white;
+
+    &:hover {
+        text-decoration: none;
+
+        .uit-related-image {
+            opacity: .5;
+        }
+
+        .uit-related__title {
+            color: $c-white;
+        }
+    }
+}
+
+.is-last-slide {
+    @include mq($until: tablet) {
+        .uit-slide-panel {
+            overflow-y: scroll;
+        }
+    }
+}
