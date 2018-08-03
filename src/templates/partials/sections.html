@@ -1,0 +1,39 @@
+<div class='uit-body'>
+    <div class='uit-container'>
+        <div class='uit-content'>
+
+        </div>
+    </div>
+</div>
+
+<div class='uit-sections'>
+    {{#each sections}}
+        {{#if_eq type 'text'}}
+            <div class='uit-section uit-section--text'>
+                <div class='uit-container'>
+                    <div class='uit-content'>
+                        {{{ marked copy }}}
+                    </div>
+                </div>
+            </div>
+        {{/if_eq}}
+
+        {{#if_eq type 'media'}}
+            <ul class='uit-section uit-section--media'>
+                {{#each media}}
+                    <li class='uit-media uit-media--{{ type }}'>
+                        {{#if_eq type 'image'}}
+                            <img class='uit-media__image' src='{{ asset }}/2000.jpg' />
+                        {{/if_eq}}
+                        {{#if_eq type 'video'}}
+                            <video class='uit-media__video' autoplay muted>
+                                <source src='{{ asset }}' />
+                            </video>
+                        
+                        {{/if_eq}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if_eq}}
+    {{/each}}
+</div>

@@ -75,7 +75,7 @@ function organiseSections(data) {
         }
     }
 
-    console.log(organisedSections);
+    data.sections = organisedSections;
 
     return data;
 }
