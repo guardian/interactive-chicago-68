@@ -1,4 +1,4 @@
-.uit-section--type {
+.uit-section--text {
     p {
         @include bodyCopy();
         margin-bottom: 18px;
@@ -8,6 +8,10 @@
         @include dropCap(4);
         font-weight: bold;
         color: $c-red;
+    }
+
+    .uit-content {
+        padding: 20px 0;
     }
 }
 
@@ -22,11 +26,14 @@
 .uit-media__caption {
     position: relative;
     z-index: 5;
-    margin: 100vh 0;
+    margin: 60vh 0;
     background-color: $c-black;
     display: inline-block;
-    padding: 6px;
+    padding: 2px 6px;
     font-family: 'Guardian Egyptian Web';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
     color: $c-white;
     max-width: 620px;
 
