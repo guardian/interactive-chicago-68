@@ -36,11 +36,26 @@ module.exports =  {
             } else if (scrollTop > sectionBottom - windowHeight) {
                 state = 'is-past'
             } else {
-                state = 'is-active'
+                state = 'is-current'
+                this.setActiveSlide(el);
             }
 
-            $(el).removeClass('is-future is-past is-active').addClass(state);
+            $(el).removeClass('is-future is-past is-current').addClass(state);
 
         }.bind(this));
+    },
+
+    setActiveSlide: function(el) {
+        $('.is-active').removeClass('is-active');
+
+        var active = 0;
+
+        $(el).find('.uit-media').each(function(i, el) {
+            if (scrollTop > $(el).offset().top - (windowHeight / 4)) {
+                active = i;
+            }
+        }.bind(this));
+
+        $(el).find('.uit-media--' + active).addClass('is-active');
     }
 };

@@ -21,7 +21,7 @@
         {{#if_eq type 'media'}}
             <ul class='uit-section uit-section--media'>
                 {{#each media}}
-                    <li class='uit-media uit-media--{{ type }}'>
+                    <li class='uit-media uit-media--{{ type }} uit-media--{{ @index }}'>
                         <div class='uit-container'>
                             <div class='uit-media__caption'>
                                 {{{ marked copy }}}
