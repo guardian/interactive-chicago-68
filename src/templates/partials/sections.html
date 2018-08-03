@@ -29,12 +29,14 @@
                         </div>
 
                         {{#if_eq type 'image'}}
-                            <img class='uit-media__media uit-media__media--image' src='{{ asset }}/2000.jpg' />
+                            <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/2000.jpg);'></div>
                         {{/if_eq}}
                         {{#if_eq type 'video'}}
-                            <video class='uit-media__media uit-media__media--video' autoplay muted>
-                                <source src='{{ asset }}' />
-                            </video>
+                            <div class='uit-media__video-wrapper'>
+                                <video class='uit-media__media uit-media__media--video' autoplay loop muted>
+                                    <source src='{{ asset }}' />
+                                </video>
+                            </div>
                         {{/if_eq}}
                     </li>
                 {{/each}}
