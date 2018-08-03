@@ -37,7 +37,9 @@
     width: 100%;
     height: 100vh;
 
-    .is-active & {
+    .is-active &,
+    .is-future .uit-media--0 &,
+    .is-past .uit-media:last-of-type & {
         opacity: 1;
     }
 
