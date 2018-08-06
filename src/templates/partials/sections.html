@@ -19,25 +19,30 @@
         {{/if_eq}}
 
         {{#if_eq type 'media'}}
-            <ul class='uit-section uit-section--media'>
+            <ul class='uit-section uit-section--slides'>
                 {{#each media}}
-                    <li class='uit-media uit-media--{{ type }} uit-media--{{ @index }}'>
+                    <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }}'>
                         <div class='uit-container'>
-                            <div class='uit-media__caption'>
+                            <div class='uit-slide__caption'>
                                 {{{ marked copy }}}
                             </div>
                         </div>
 
-                        {{#if_eq type 'image'}}
-                            <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/2000.jpg);'></div>
-                        {{/if_eq}}
-                        {{#if_eq type 'video'}}
-                            <div class='uit-media__video-wrapper'>
-                                <video class='uit-media__media uit-media__media--video' autoplay loop muted>
-                                    <source src='{{ asset }}' />
-                                </video>
-                            </div>
-                        {{/if_eq}}
+                        <div class='uit-media'>
+                            {{#if_eq type 'image'}}
+                                <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/2000.jpg);'></div>
+                            {{/if_eq}}
+                            {{#if_eq type 'video'}}
+                                <div class='uit-media__video-wrapper'>
+                                    <video class='uit-media__media uit-media__media--video' autoplay loop muted>
+                                        <source src='{{ asset }}' />
+                                    </video>
+                                </div>
+                            {{/if_eq}}
+                            {{#if map}}
+                                <iframe class='uit-media__map' src="https://www.google.com/maps/d/u/0/embed?mid=1SXpPh4Waldi8A7th4NlaF5ykqWzht2NE"></iframe>
+                            {{/if}}
+                        </div>
                     </li>
                 {{/each}}
             </ul>

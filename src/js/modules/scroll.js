@@ -26,7 +26,7 @@ module.exports =  {
     onScroll: function() {
         scrollTop = $(window).scrollTop();
 
-        $('.uit-section--media').each(function(i, el) {
+        $('.uit-section--slides').each(function(i, el) {
             var sectionTop = $(el).offset().top;
             var sectionBottom = sectionTop + $(el).outerHeight();
             var state;
@@ -50,12 +50,12 @@ module.exports =  {
 
         var active = 0;
 
-        $(el).find('.uit-media').each(function(i, el) {
+        $(el).find('.uit-slide').each(function(i, el) {
             if (scrollTop > $(el).offset().top - (windowHeight / 4)) {
                 active = i;
             }
         }.bind(this));
 
-        $(el).find('.uit-media--' + active).addClass('is-active');
+        $(el).find('.uit-slide--' + active).addClass('is-active');
     }
 };
