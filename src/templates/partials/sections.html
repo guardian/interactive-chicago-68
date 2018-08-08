@@ -20,8 +20,9 @@
 
         {{#if_eq type 'media'}}
             <ul class='uit-section uit-section--slides'>
+                <div class='uit-media__map' id='uit-media__map'></div>
                 {{#each media}}
-                    <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }}'>
+                    <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }} {{#if map}}has-map{{/if}}'>
                         <div class='uit-container'>
                             <div class='uit-slide__caption'>
                                 {{{ marked copy }}}
@@ -39,9 +40,6 @@
                                     </video>
                                 </div>
                             {{/if_eq}}
-                            {{#if map}}
-                                <iframe class='uit-media__map' src="https://www.google.com/maps/d/u/0/embed?mid=1SXpPh4Waldi8A7th4NlaF5ykqWzht2NE"></iframe>
-                            {{/if}}
                         </div>
                     </li>
                 {{/each}}
