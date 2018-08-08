@@ -1,3 +1,5 @@
+var map = require('../modules/map.js');
+
 var scrollTop,
     windowHeight;
 
@@ -62,6 +64,7 @@ module.exports =  {
 
         if ($target.hasClass('has-map')) {
             $(el).addClass('is-mapping');
+            map.updateMap($target.data('map'))
         } else {
             $(el).removeClass('is-mapping');
         }

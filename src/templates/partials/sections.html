@@ -22,7 +22,7 @@
             <ul class='uit-section uit-section--slides'>
                 <div class='uit-media__map' id='uit-media__map'></div>
                 {{#each media}}
-                    <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }} {{#if map}}has-map{{/if}}'>
+                    <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }} {{#if map}}has-map{{/if}}' {{#if map}}data-map='{{ map }}'{{/if}}>
                         <div class='uit-container'>
                             <div class='uit-slide__caption'>
                                 {{{ marked copy }}}
