@@ -79,13 +79,17 @@
     transition: opacity 0.3s linear;
     width: 100%;
     height: 100vh;
+
+    .has-map & {
+        width: 50%;
+    }
 }
 
 .uit-media,
 .uit-media__map {
     .is-active &,
     .is-future .uit-slide--0 &,
-    .is-past .uit-media:last-of-type & {
+    .is-past .uit-slide:last-of-type & {
         opacity: 1;
     }
 
@@ -134,14 +138,19 @@
 .uit-media__map {
     background-color: $c-white;
     position: absolute;
+    z-index: 2;
     right: 0;
     width: 50%;
     flex-grow: 0;
     flex-shrink: 0;
     height: 100vh;
     overflow: hidden;
-    z-index: 4000;
-    pointer-events: auto;
+    opacity: 0;
+
+    .is-mapping & {
+        opacity: 1;
+        transition: opacity 0.3s linear;
+    }
 }
 
 .leaflet-tile-container img {

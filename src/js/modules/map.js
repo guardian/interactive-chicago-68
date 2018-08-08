@@ -4,7 +4,7 @@ var accessToken = 'pk.eyJ1Ijoic2FtbW9ycmlzMTIiLCJhIjoiY2pnM3gwMGZmMjNubjJ3cDk1dX
 
 module.exports =  {
     init: function() {
-        this.createMap();
+        // this.createMap();
     },
 
     createMap: function() {

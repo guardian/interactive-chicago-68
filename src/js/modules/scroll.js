@@ -56,6 +56,14 @@ module.exports =  {
             }
         }.bind(this));
 
-        $(el).find('.uit-slide--' + active).addClass('is-active');
+        var $target = $(el).find('.uit-slide--' + active);
+
+        $target.addClass('is-active');
+
+        if ($target.hasClass('has-map')) {
+            $(el).addClass('is-mapping');
+        } else {
+            $(el).removeClass('is-mapping');
+        }
     }
 };
