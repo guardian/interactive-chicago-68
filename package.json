@@ -49,6 +49,7 @@
     "stringify": "^5.1.0",
     "sync-request": "^3.0.1",
     "topojson": "^3.0.2",
+    "uglify-js": "^3.4.7",
     "user-home": "^2.0.0"
   }
 }

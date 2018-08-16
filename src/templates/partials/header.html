@@ -3,7 +3,7 @@
         <li class='uit-slide uit-slide--image uit-slide--0 uit-slide--left'>
             <div class='uit-container'>
                 <div class='uit-slide__caption'>
-                    <p>By the summer of 1968, Americans were dying at a rate of more than 1,000 per month in the bloodiest year of the Vietnam War.</p>
+                    <p>By the summer of 1968, Americans were dying at a rate of more than 1,000 per month in the bloodiest year of the Vietnam War</p>
                 </div>
             </div>
 
@@ -15,7 +15,7 @@
         <li class='uit-slide uit-slide--image uit-slide--1 uit-slide--right'>
             <div class='uit-container'>
                 <div class='uit-slide__caption'>
-                    <p>By the summer of 1968, Americans were dying at a rate of more than 1,000 per month in the bloodiest year of the Vietnam War.</p>
+                    <p>The war came home to the streets of an American city, as a young generation opposed to the conflict were met with brutal force from police in Chicago</p>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
         <li class='uit-slide uit-slide--image uit-slide--2 uit-slide--left'>
             <div class='uit-container'>
                 <div class='uit-slide__caption'>
-                    <p>By the summer of 1968, Americans were dying at a rate of more than 1,000 per month in the bloodiest year of the Vietnam War.</p>
+                    <p>Young Americans were radicalised by shocking television footage of police battering demonstrators</p>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
         <li class='uit-slide uit-slide--image uit-slide--3 uit-slide--right'>
             <div class='uit-container'>
                 <div class='uit-slide__caption'>
-                    <p>By the summer of 1968, Americans were dying at a rate of more than 1,000 per month in the bloodiest year of the Vietnam War.</p>
+                    <p>But a terrified older generation sided with police and turned to law and order strongman Richard Nixon, sewing divisions that still play out today</p>
                 </div>
             </div>
 
@@ -48,10 +48,10 @@
             </div>
         </li>
 
-        <li class='uit-slide uit-slide--video uit-slide--4'>
+        <li class='uit-slide uit-slide--video uit-slide--4 uit-slide--headline'>
             <div class='uit-container'>
                 <div class='uit-slide__caption'>
-<!--                     <p>By the summer of 1968, Americans were dying at a rate of more than 1,000 per month in the bloodiest year of the Vietnam War.</p> -->
+                    <p></p>
                 </div>
             </div>
 
@@ -67,10 +67,14 @@
 
     <div class='uit-container'>
         <div class='uit-content'>
-            <h1 class='uit-header__headline' itemprop='headline'>
-                {{ headline }}
-            </h1>
-            <p class='uit-header__standfirst' itemprop='description'>{{ standfirst }}</p>
+            <div class='uit-header__content'>
+                <h1 class='uit-header__headline' itemprop='headline'>
+                    <span class='uit-header__headline__inner'>{{ headline }}</span>
+                </h1>
+                <p class='uit-header__standfirst' itemprop='description'>
+                    <span class='uit-header__standfirst__inner'>{{ standfirst }}</span>
+                </p>
+            </div>
             <div class='uit-header__byline'>{{{ marked byline }}}</div>
             {{> partials/share }}
         </div>

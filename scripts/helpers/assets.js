@@ -2,6 +2,7 @@ var fs = require('fs-extra');
 var handlebars = require('handlebars');
 var browserify = require('browserify');
 var stringify = require('stringify');
+var UglifyJS = require("uglify-js");
 var sass = require('node-sass');
 var deasync = require('deasync');
 var glob = require('glob-fs')({ gitignore: true });
@@ -19,7 +20,12 @@ module.exports = {
             if (err) {
                 console.log(err);
             }
-            fs.writeFileSync(path + '/' + fileName + '.js', buf.toString().replace(/\{\{ path \}\}/g, absolutePath).replace(/\{\{path\}\}/g, absolutePath));
+
+            var output = buf.toString();
+                output = UglifyJS.minify(output);
+                output = output.code.replace(/\{\{ path \}\}/g, absolutePath).replace(/\{\{path\}\}/g, absolutePath);
+
+            fs.writeFileSync(path + '/' + fileName + '.js', output);
             isDone = true;
             console.log('Updated ' + fileName + ' js!');
         });

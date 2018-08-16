@@ -146,6 +146,7 @@
     height: 100vh;
     overflow: hidden;
     opacity: 0;
+    text-decoration: none;
 
     .is-mapping & {
         opacity: 1;
