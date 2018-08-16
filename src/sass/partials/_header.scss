@@ -1,6 +1,33 @@
 .uit-header {
     overflow: auto;
+
+    .uit-slide__caption {
+        margin: 40vh 0;
+    }
+
+    .uit-slide--left {
+        .uit-media {
+            width: 50%;
+        }
+
+        .uit-slide__caption {
+            margin-left: calc(50% + 20px);
+        }
+    }
+
+    .uit-slide--right {
+        .uit-media {
+            width: 50%;
+            right: 0;
+            left: auto;
+        }
+
+        .uit-slide__caption {
+            margin-left: 0;
+        }
+    }
 }
+
 
 .uit-header__headline {
     padding: 6px 0;
