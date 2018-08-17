@@ -54,6 +54,10 @@
         margin-left: 220px;
     }
 
+    &:first-of-type {
+        margin-top: 10vh;
+    }
+
     p {
         display: inline;
         padding-bottom: .1em;
@@ -167,4 +171,53 @@
 .leaflet-tile-container img {
     display: inline;
     position: absolute;
+}
+
+.leaflet-marker-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.uit-media__map-label {
+    position: relative;
+    @include banding($c-light-red);
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 700;
+    font-size: 18px;
+    color: $c-white;
+    text-align: center;
+    display: inline-block;
+    transform: translate(-50%, calc(-100% - 13px));
+
+    &__inner {
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            bottom: -22px;
+            left: 0;
+            right: 0;
+            border-radius: 8px;
+            background-color: $c-black;
+            margin: auto;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 0;
+            width: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid $c-light-red;
+            margin: auto;
+        }
+    }
 }

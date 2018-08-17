@@ -19,7 +19,7 @@ module.exports =  {
             startingData = this.dataToFormats(startingData);
 
         maps[id] = L.map(id, {
-            maxBounds: [[41.6910, -87.8373], [42.0025, -87.4288]],
+            maxBounds: new L.bounds([41.7743, -87.7427], [41.9357, -87.5261]),
             center: startingData.bounds,
             zoom: startingData.zoom
         });
@@ -35,9 +35,14 @@ module.exports =  {
         }
 
         var imageUrl = '{{ path }}/assets/chicago.svg',
-        imageBounds = [[41.6910, -87.8373], [42.0025, -87.4288]];
+        imageBounds = [[41.7743, -87.7427], [41.9357, -87.5261]];
 
         L.imageOverlay(imageUrl, imageBounds).addTo(maps[id]);
+
+        this.addMarker(id, 41.81698, -87.64573, 'International Amphitheater');
+        this.addMarker(id, 41.91407, -87.62973, 'Lincoln Park');
+        this.addMarker(id, 41.87259, -87.62472, 'Hilton Chicago');
+        this.addMarker(id, 41.87415, -87.62080, 'Grant Park');
     },
 
     updateMap: function(id, data) {
@@ -58,5 +63,14 @@ module.exports =  {
             bounds: new L.LatLng(data[0], data[1]),
             zoom: data[2]
         };
-    } 
+    },
+
+    addMarker: function(id, lat, lng, title) {
+        L.marker(new L.LatLng(lat, lng), {
+            icon: new L.DivIcon({
+                className: 'uit-media__map-marker',
+                html: '<div class="uit-media__map-label"><span class="uit-media__map-label__inner">' + title + '</span></div>'
+            })
+        }).addTo(maps[id]);
+    }
 };

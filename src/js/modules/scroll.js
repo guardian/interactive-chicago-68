@@ -53,7 +53,7 @@ module.exports =  {
         var active = 0;
 
         $(el).find('.uit-slide').each(function(i, el) {
-            if (scrollTop > $(el).offset().top - (windowHeight / 4)) {
+            if (scrollTop > $(el).offset().top - ((windowHeight / 4) * 3)) {
                 active = i;
             }
         }.bind(this));
