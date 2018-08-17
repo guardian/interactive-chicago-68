@@ -70,7 +70,9 @@
     }
 
     &__inner {
-        box-shadow: 12px 0 0 $c-black, -12px 0 0 $c-black;
+        @include mq(tablet) {
+            box-shadow: 12px 0 0 $c-black, -12px 0 0 $c-black;
+        }
     }
 }
 
@@ -80,6 +82,7 @@
     color: $c-light-red;
     font-size: 24px;
     font-weight: 700;
+    margin: 0 0 6px;
 }
 
 .uit-header__byline {

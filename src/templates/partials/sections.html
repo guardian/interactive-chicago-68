@@ -11,7 +11,7 @@
         {{/if_eq}}
 
         {{#if_eq type 'media'}}
-            <ul class='uit-section uit-section--slides'>
+            <ul class='uit-section uit-section--slides is-future'>
                 <div class='uit-media__map' id='uit-media__map'></div>
                 {{#each media}}
                     <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }} {{#if map}}has-map{{/if}}' {{#if map}}data-map='{{ map }}' data-labels='{{ maplabels }}'{{/if}}>
@@ -23,7 +23,16 @@
 
                         <div class='uit-media'>
                             {{#if_eq type 'image'}}
-                                <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/2000.jpg);'></div>
+                                <div class='uit-media__image-wrapper uit-media__image-wrapper--mobile'>
+                                    <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/1000.jpg);'></div>
+                                </div>
+                                <div class='uit-media__image-wrapper uit-media__image-wrapper--desktop'>
+                                    {{#if map}}
+                                        <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/1000.jpg);'></div>
+                                    {{else}}
+                                        <div class='uit-media__media uit-media__media--image' style='background-image: url({{{ asset }}}/2000.jpg);'></div>
+                                    {{/if}}
+                                </div>
                             {{/if_eq}}
                             {{#if_eq type 'video'}}
                                 <div class='uit-media__video-wrapper'>

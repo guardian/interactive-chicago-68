@@ -30,9 +30,6 @@ module.exports =  {
         map.scrollWheelZoom.disable();
         map.boxZoom.disable();
         map.keyboard.disable();
-        if (map.tap) {
-            map.tap.display();
-        }
 
         var image = L.imageOverlay('{{ path }}/assets/chicago.svg', maxBounds);
             image.getAttribution = function() { return '&copy; OpenStreetMap' }
