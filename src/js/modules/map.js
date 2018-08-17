@@ -38,7 +38,7 @@ module.exports =  {
         }
 
         var imageUrl = '{{ path }}/assets/chicago.svg',
-        imageBounds = [[41.7743, -87.7427], [41.9357, -87.5261]];
+        imageBounds = [[41.7780, -87.7168], [41.9830, -87.5321]];
 
         var image = L.imageOverlay(imageUrl, imageBounds);
             image.getAttribution = function() { return '&copy; OpenStreetMap' }
