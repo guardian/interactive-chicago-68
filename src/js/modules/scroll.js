@@ -64,7 +64,7 @@ module.exports =  {
 
         if ($target.hasClass('has-map')) {
             $(el).addClass('is-mapping');
-            map.updateMap($target.parent().find('.uit-media__map').attr('id'), $target.data('map'))
+            map.updateMap($target.data());
         } else {
             $(el).removeClass('is-mapping');
         }

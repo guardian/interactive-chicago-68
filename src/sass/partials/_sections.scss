@@ -208,6 +208,12 @@
     text-align: center;
     display: inline-block;
     transform: translate(-50%, calc(-100% - 13px));
+    transition: opacity 0.2s linear;
+    opacity: 0;
+
+    .is-focus & {
+        opacity: 1;
+    }
 
     &__inner {
         position: relative;

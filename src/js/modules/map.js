@@ -1,79 +1,101 @@
 var L = require('leaflet');
 
-var maps = [],
-    currentData = '';
+var map, currentData = '';
 
 module.exports =  {
     init: function() {
-        this.createMaps();
+        this.createMap();
+        this.bindings();
     },
 
-    createMaps: function() {
-        $('.uit-media__map').each(function(i, el) {
-            this.createMap($(el).attr('id'))
+    createMap: function() {
+        var startingData = $('.uit-media__map').parent().find('.has-map').first().data('map');
+        var bounds = this.dataToBounds(startingData);
+        var maxBounds = L.latLngBounds(L.latLng(41.7780, -87.7168), L.latLng(41.9830, -87.5321));
+
+        map = L.map('uit-media__map', {
+            center: bounds.getCenter(),
+            maxBounds: maxBounds,
+            maxBoundsViscosity: 1.0,
+            zoom: 13,
+            zoomControl: false,
+            minZoom: 12,
+            maxZoom: 14,
+            zoomSnap: 0
+        });
+
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+        map.boxZoom.disable();
+        map.keyboard.disable();
+        if (map.tap) {
+            map.tap.display();
+        }
+
+        var image = L.imageOverlay('{{ path }}/assets/chicago.svg', maxBounds);
+            image.getAttribution = function() { return '&copy; OpenStreetMap' }
+            image.addTo(map);
+
+        this.addMarker(41.81698, -87.64573, 'International Amphitheater');
+        this.addMarker(41.91407, -87.62973, 'Lincoln Park');
+        this.addMarker(41.87415, -87.62080, 'Grant Park');
+        this.addMarker(41.87259, -87.62472, 'Conrad Hilton');
+    },
+
+    bindings: function() {
+        $(window).resize(function() {
+            map.flyToBounds(this.dataToBounds(currentData));
         }.bind(this));
     },
 
-    createMap: function(id) {
-        var startingData = $('#' + id).parent().find('.has-map').first().data('map');
-            startingData = this.dataToFormats(startingData);
-
-        maps[id] = L.map(id, {
-            maxBounds: new L.bounds([41.7743, -87.7427], [41.9357, -87.5261]),
-            center: startingData.bounds,
-            zoom: startingData.zoom,
-            zoomControl: false,
-        });
-
-        maps[id].dragging.disable();
-        maps[id].touchZoom.disable();
-        maps[id].doubleClickZoom.disable();
-        maps[id].scrollWheelZoom.disable();
-        maps[id].boxZoom.disable();
-        maps[id].keyboard.disable();
-        if (maps[id].tap) {
-            maps[id].tap.display();
-        }
-
-        var imageUrl = '{{ path }}/assets/chicago.svg',
-        imageBounds = [[41.7780, -87.7168], [41.9830, -87.5321]];
-
-        var image = L.imageOverlay(imageUrl, imageBounds);
-            image.getAttribution = function() { return '&copy; OpenStreetMap' }
-            image.addTo(maps[id]);
-
-        this.addMarker(id, 41.81698, -87.64573, 'International Amphitheater');
-        this.addMarker(id, 41.91407, -87.62973, 'Lincoln Park');
-        this.addMarker(id, 41.87259, -87.62472, 'Hilton Chicago');
-        this.addMarker(id, 41.87415, -87.62080, 'Grant Park');
-    },
-
-    updateMap: function(id, data) {
-        if (data !== currentData && maps[id]) {
+    updateMap: function(data) {
+        if (data !== currentData && map) {
+            console.log('updating map');
             currentData = data;
 
-            maps[id].flyTo(this.dataToFormats(data).bounds, this.dataToFormats(data).zoom);
+            map.flyToBounds(this.dataToBounds(data.map), {
+                duration: 1,
+                animate: true
+            });
+
+            $('.uit-media__map-marker').removeClass('is-focus');
+
+            if (typeof data.labels === 'string') {
+                data.labels = data.labels.split(', ');
+            }
+
+            console.log(data.labels);
+
+            for (var label in data.labels) {
+                $('.uit-media__map-marker--' + data.labels[label]).addClass('is-focus');
+            }
         }
     },
 
-    dataToFormats: function(data) {
+    dataToBounds: function(data) {
         data = data.split(', ');
         data[0] = parseFloat(data[0]);
         data[1] = parseFloat(data[1]);
-        data[2] = parseInt(data[2]);
+        data[2] = parseFloat(data[2]);
+        data[3] = parseFloat(data[3]);
 
-        return {
-            bounds: new L.LatLng(data[0], data[1]),
-            zoom: data[2]
-        };
+        var northEast = new L.latLng(data[0], data[1]);
+        var southWest = new L.latLng(data[2], data[3]);
+        var bounds = new L.latLngBounds(southWest, northEast);
+
+        console.log(bounds);
+
+        return bounds;
     },
 
-    addMarker: function(id, lat, lng, title) {
+    addMarker: function(lat, lng, title) {
         L.marker(new L.LatLng(lat, lng), {
             icon: new L.DivIcon({
-                className: 'uit-media__map-marker',
+                className: 'uit-media__map-marker uit-media__map-marker--' + title.toLowerCase().replace(/ /g, '-'),
                 html: '<div class="uit-media__map-label"><span class="uit-media__map-label__inner">' + title + '</span></div>'
             })
-        }).addTo(maps[id]);
+        }).addTo(map);
     }
 };
