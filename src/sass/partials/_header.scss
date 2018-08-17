@@ -5,6 +5,10 @@
         margin-top: 40vh;
         margin-bottom: 40vh;
         max-width: 540px;
+
+        @include mq(tablet) {
+            font-size: 36px;
+        }
     }
 
     .uit-slide--left {
