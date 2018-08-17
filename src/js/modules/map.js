@@ -25,8 +25,6 @@ module.exports =  {
             zoomControl: false,
         });
 
-//         maps[id].control.addAttribution('&copy; OpenStreetMaps');
-
         maps[id].dragging.disable();
         maps[id].touchZoom.disable();
         maps[id].doubleClickZoom.disable();
