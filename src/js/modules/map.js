@@ -52,7 +52,6 @@ module.exports =  {
 
     updateMap: function(data) {
         if (data !== currentData && map) {
-            console.log('updating map');
             currentData = data;
 
             map.flyToBounds(this.dataToBounds(data.map), {
@@ -65,8 +64,6 @@ module.exports =  {
             if (typeof data.labels === 'string') {
                 data.labels = data.labels.split(', ');
             }
-
-            console.log(data.labels);
 
             for (var label in data.labels) {
                 $('.uit-media__map-marker--' + data.labels[label]).addClass('is-focus');
@@ -84,8 +81,6 @@ module.exports =  {
         var northEast = new L.latLng(data[0], data[1]);
         var southWest = new L.latLng(data[2], data[3]);
         var bounds = new L.latLngBounds(southWest, northEast);
-
-        console.log(bounds);
 
         return bounds;
     },
