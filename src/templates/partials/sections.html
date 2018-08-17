@@ -12,7 +12,7 @@
 
         {{#if_eq type 'media'}}
             <ul class='uit-section uit-section--slides'>
-                <div class='uit-media__map' id='uit-media__map'></div>
+                <div class='uit-media__map' id='uit-media__map-{{ @index }}'></div>
                 {{#each media}}
                     <li class='uit-slide uit-slide--{{ type }} uit-slide--{{ @index }} {{#if map}}has-map{{/if}}' {{#if map}}data-map='{{ map }}'{{/if}}>
                         <div class='uit-container'>
