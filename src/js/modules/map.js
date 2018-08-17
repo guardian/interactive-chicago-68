@@ -13,6 +13,16 @@ module.exports =  {
             zoom: 14
         });
 
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+        map.boxZoom.disable();
+        map.keyboard.disable();
+        if (map.tap) {
+            map.tap.display();
+        }
+
         var imageUrl = '{{ path }}/assets/chicago.svg',
         imageBounds = [[41.6910, -87.8373], [42.0025, -87.4288]];
 

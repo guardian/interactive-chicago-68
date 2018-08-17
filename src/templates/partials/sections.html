@@ -37,5 +37,9 @@
                 {{/each}}
             </ul>
         {{/if_eq}}
+
+        {{#if_eq type 'outro'}}
+            {{> partials/header-echo }}
+        {{/if_eq}}
     {{/each}}
 </div>

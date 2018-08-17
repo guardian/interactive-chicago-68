@@ -59,7 +59,7 @@ function organiseSections(data) {
     var organisedSections = [];
 
     for (var i in data.sections) {
-        if (data.sections[i].type === 'text') {
+        if (data.sections[i].type === 'text' || data.sections[i].type === 'outro') {
             organisedSections.push(data.sections[i]);
         } else {
             if (organisedSections.length > 0) {
@@ -81,13 +81,15 @@ function organiseSections(data) {
 }
 
 function convertToGridUrl(url) {
-    var crop = url.split('?crop=')[1];
-        url = url.replace('gutools.co.uk', 'guim.co.uk');
-        url = url.replace('http://', 'https://');
-        url = url.replace('images/', '');
-        url = url.split('?')[0];
+    if (url) {
+        var crop = url.split('?crop=')[1];
+            url = url.replace('gutools.co.uk', 'guim.co.uk');
+            url = url.replace('http://', 'https://');
+            url = url.replace('images/', '');
+            url = url.split('?')[0];
 
-    return url + '/' + crop;
+        return url + '/' + crop;
+    }
 }
 
 module.exports = function getData() {
