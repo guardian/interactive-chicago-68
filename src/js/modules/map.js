@@ -15,9 +15,13 @@ module.exports =  {
     },
 
     createMap: function(id) {
+        var startingData = $('#' + id).parent().find('.has-map').first().data('map');
+            startingData = this.dataToFormats(startingData);
+
         maps[id] = L.map(id, {
-            center: [41.8666, -87.5923],
-            zoom: 14
+            maxBounds: [[41.6910, -87.8373], [42.0025, -87.4288]],
+            center: startingData.bounds,
+            zoom: startingData.zoom
         });
 
         maps[id].dragging.disable();
@@ -37,15 +41,22 @@ module.exports =  {
     },
 
     updateMap: function(id, data) {
-        console.log(id);
-        if (data !== currentData) {
+        if (data !== currentData && maps[id]) {
             currentData = data;
 
-            data = data.split(', ');
-            data[0] = parseFloat(data[0]);
-            data[1] = parseFloat(data[1]);
-            data[2] = parseInt(data[2]);
-            maps[id].flyTo(new L.LatLng(data[0], data[1]), data[2]);
+            maps[id].flyTo(this.dataToFormats(data).bounds, this.dataToFormats(data).zoom);
         }
-    }
+    },
+
+    dataToFormats: function(data) {
+        data = data.split(', ');
+        data[0] = parseFloat(data[0]);
+        data[1] = parseFloat(data[1]);
+        data[2] = parseInt(data[2]);
+
+        return {
+            bounds: new L.LatLng(data[0], data[1]),
+            zoom: data[2]
+        };
+    } 
 };
