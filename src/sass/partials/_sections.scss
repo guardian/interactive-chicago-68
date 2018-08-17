@@ -179,6 +179,25 @@
     left: 0;
 }
 
+.leaflet-right {
+    position: absolute;
+    bottom: 0px;
+    right: 4px;
+    font-family: 'Guardian Sans Web';
+    font-size: 14px;
+    color: $c-black;
+
+    a {
+        color: $c-black;
+        border-bottom: 1px solid $c-light-red;
+
+        &:hover {
+            text-decoration: none;
+            color: $c-light-red;
+        }
+    }
+}
+
 .uit-media__map-label {
     position: relative;
     @include banding($c-light-red);

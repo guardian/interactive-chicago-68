@@ -21,8 +21,11 @@ module.exports =  {
         maps[id] = L.map(id, {
             maxBounds: new L.bounds([41.7743, -87.7427], [41.9357, -87.5261]),
             center: startingData.bounds,
-            zoom: startingData.zoom
+            zoom: startingData.zoom,
+            zoomControl: false,
         });
+
+//         maps[id].control.addAttribution('&copy; OpenStreetMaps');
 
         maps[id].dragging.disable();
         maps[id].touchZoom.disable();
@@ -37,7 +40,9 @@ module.exports =  {
         var imageUrl = '{{ path }}/assets/chicago.svg',
         imageBounds = [[41.7743, -87.7427], [41.9357, -87.5261]];
 
-        L.imageOverlay(imageUrl, imageBounds).addTo(maps[id]);
+        var image = L.imageOverlay(imageUrl, imageBounds);
+            image.getAttribution = function() { return '&copy; OpenStreetMap' }
+            image.addTo(maps[id]);
 
         this.addMarker(id, 41.81698, -87.64573, 'International Amphitheater');
         this.addMarker(id, 41.91407, -87.62973, 'Lincoln Park');
