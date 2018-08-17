@@ -4,10 +4,19 @@
     .uit-slide__caption {
         margin-top: 40vh;
         margin-bottom: 40vh;
-        max-width: 540px;
+        max-width: calc(50% - 32px);
+
+        @include mq(mobileLandscape) {
+            max-width: calc(50% - 52px);
+        }
 
         @include mq(tablet) {
             font-size: 36px;
+            max-width: 540px;
+        }
+
+        p:after {
+            display: none;
         }
     }
 
@@ -17,7 +26,11 @@
         }
 
         .uit-slide__caption {
-            margin-left: calc(50% + 20px);
+            margin-left: calc(50% + 10px);
+
+            @include mq(mobileLandscape) {
+                margin-left: calc(50% + 20px);
+            }
         }
     }
 
