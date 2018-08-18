@@ -81,6 +81,15 @@ module.exports = {
             return '<p><span class=\'uit-drop-cap\'><span class=\'uit-drop-cap__inner\'>' + firstCharacter + '</span></span>' + intro;
         });
 
+        handlebars.registerHelper('imageUrl', function(url, fileName) {
+            console.log(url);
+            if (url.includes('media.guim.co.uk')) {
+                return url + '/' + fileName + '.jpg';
+            } else {
+                return url;
+            }
+        });
+
         handlebars.registerHelper('inc', function(value, options) {
             return parseInt(value) + 1;
         });

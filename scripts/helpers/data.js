@@ -81,7 +81,7 @@ function organiseSections(data) {
 }
 
 function convertToGridUrl(url) {
-    if (url) {
+    if (url && url.includes('gutools.co.uk')) {
         var crop = url.split('?crop=')[1];
             url = url.replace('gutools.co.uk', 'guim.co.uk');
             url = url.replace('http://', 'https://');
@@ -89,6 +89,8 @@ function convertToGridUrl(url) {
             url = url.split('?')[0];
 
         return url + '/' + crop;
+    } else {
+        return url
     }
 }
 
