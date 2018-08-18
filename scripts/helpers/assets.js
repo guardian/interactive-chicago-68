@@ -82,7 +82,6 @@ module.exports = {
         });
 
         handlebars.registerHelper('imageUrl', function(url, fileName) {
-            console.log(url);
             if (url.includes('media.guim.co.uk')) {
                 return url + '/' + fileName + '.jpg';
             } else {
