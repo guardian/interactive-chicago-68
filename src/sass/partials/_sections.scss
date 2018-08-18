@@ -14,10 +14,65 @@
         }
     }
 
+    blockquote {
+        background-color: $c-white;
+
+        @include mq(leftCol) {
+            padding: 6px 0;
+        }
+    }
+
+    blockquote p {
+        position: relative;
+        z-index: 20;
+        float: left;
+        font-family: 'Guardian Egyptian Web';
+        font-weight: 700;
+        color: $c-light-red;
+        max-width: 50%;
+        margin-right: 10px;
+        margin-bottom: 12px;
+        font-size: 18px;
+        line-height: 1.1;
+        text-indent: 1.2em;
+
+        @include mq(mobileLandscape) {
+            max-width: 220px;
+        }
+
+        @include mq(tablet) {
+            font-size: 24px;
+        }
+
+        @include mq(leftCol) {
+            margin-left: -100px;
+            background-color: $c-white;
+        }
+
+        &:before {
+            content: '';
+            height: .75em;
+            width: 1.4em;
+            position: absolute;
+            top: .15em;
+            left: 0;
+            background-size: contain;
+            background-image: url('data:image/svg+xml;utf8,<svg width="70" height="49" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 49"><path fill="\#121212" d="M69.587.9c-1.842 15.556-3.89 31.316-4.708 48.1H37.043c3.07-16.784 8.391-32.544 17.602-48.1h14.942zM32.949.9c-2.047 15.556-4.094 31.316-4.912 48.1H.2C3.066 32.216 8.592 16.456 17.598.9h15.35z"></path></svg>');
+            background-repeat: no-repeat;
+        }
+
+        strong {
+            color: $c-black;
+            font-weight: 700;
+            display: block;
+            text-indent: 0;
+        }
+    }
+
     .uit-drop-cap {
         @include dropCap(4);
         font-weight: bold;
-        color: $c-red;
+        color: $c-light-red;
     }
 
     .uit-content {

@@ -1,5 +1,5 @@
 var pageUrl = window.location.href.split('#')[0],
-    shareCopy = 'What a cool article #Article';
+    shareCopy = 'The whole world is watching: How the 1968 Chicago \'police riot\' shocked America and divided the nation';
 
 module.exports =  {
     init: function() {
